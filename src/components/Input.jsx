@@ -21,7 +21,7 @@ const Input = ({
         type={type}
         value={value}
         onChange={onChange}
-        placeholder={placeholder}
+        // placeholder={placeholder}
         required={required}
         className={`input-field ${error ? 'input-error' : ''}`}
       />

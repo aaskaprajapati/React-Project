@@ -65,21 +65,29 @@ function App() {
       </div>
 
 
-      {/* ── Add Form ── */}
-      {showAddForm && (
-        <div className="add-form-wrapper">
-          <NewStudent onAddStudent={handleAddStudent} />
+      <div className="app-main">
+        {/* ── Student List (Left Side) ── */}
+        <div className="list-section">
+          <StudentList
+            students={students}
+            onStatusChange={toggleStatus}
+            onDelete={deleteStudent}
+          />
         </div>
-      )}
 
-      <div className="divider" />
-
-      {/* ── Student List ── */}
-      <StudentList
-        students={students}
-        onStatusChange={toggleStatus}
-        onDelete={deleteStudent}
-      />
+        {/* ── Sidebar (Right Side) ── */}
+        {showAddForm && (
+          <aside className="sidebar-section">
+            <div className="sidebar-card">
+              <div className="sidebar-header">
+                <h3>Add New Student</h3>
+                <p>Enter details below</p>
+              </div>
+              <NewStudent onAddStudent={handleAddStudent} />
+            </div>
+          </aside>
+        )}
+      </div>
     </div>
   );
 }

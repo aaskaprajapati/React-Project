@@ -56,84 +56,81 @@ const NewStudent = ({ onAddStudent }) => {
     };
 
     return (
-        <div className="new-student-card">
-            <h2>Add New Student</h2>
-            <form onSubmit={handleSubmit}>
-                <div className="form-grid">
-                    <Input
-                        label="Full Name"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="e.g. John Doe"
-                        error={errors.name}
-                        required
-                    />
-                    <Input
-                        label="Course"
-                        id="course"
-                        name="course"
-                        value={formData.course}
-                        onChange={handleChange}
-                        placeholder="e.g. React.js"
-                        error={errors.course}
-                        required
-                    />
-                    <Input
-                        label="Age"
-                        type="number"
-                        id="age"
-                        name="age"
-                        value={formData.age}
-                        onChange={handleChange}
-                        placeholder="e.g. 20"
-                        error={errors.age}
-                        required
-                    />
-                    <Input
-                        label="Grade"
-                        type="number"
-                        id="grade"
-                        name="grade"
-                        value={formData.grade}
-                        onChange={handleChange}
-                        placeholder="e.g. 85"
-                        error={errors.grade}
-                        required
-                    />
-                </div>
+        <form onSubmit={handleSubmit} className="new-student-form">
+            <div className="form-grid">
+                <Input
+                    label="Full Name"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="e.g. John Doe"
+                    error={errors.name}
+                    required
+                />
+                <Input
+                    label="Course"
+                    id="course"
+                    name="course"
+                    value={formData.course}
+                    onChange={handleChange}
+                    placeholder="e.g. React.js"
+                    error={errors.course}
+                    required
+                />
+                <Input
+                    label="Age"
+                    type="number"
+                    id="age"
+                    name="age"
+                    value={formData.age}
+                    onChange={handleChange}
+                    placeholder="e.g. 20"
+                    error={errors.age}
+                    required
+                />
+                <Input
+                    label="Grade"
+                    type="number"
+                    id="grade"
+                    name="grade"
+                    value={formData.grade}
+                    onChange={handleChange}
+                    placeholder="e.g. 85"
+                    error={errors.grade}
+                    required
+                />
+            </div>
 
-                <div className="checkbox-group">
-                    <div className="custom-checkbox-wrapper">
-                        <input
-                            type="checkbox"
-                            id="isPresent"
-                            name="isPresent"
-                            checked={formData.isPresent}
-                            onChange={handleChange}
-                            className="custom-checkbox-input"
-                        />
-                        <label htmlFor="isPresent" className="custom-checkbox-label">
-                            <span className="checkbox-box">
-                                {formData.isPresent && (
-                                    <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
-                                        <path d="M2 6l3 3 5-5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                                    </svg>
-                                )}
-                            </span>
-                            Mark as Present
-                        </label>
-                    </div>
+            <div className="checkbox-group">
+                <div className="custom-checkbox-wrapper">
+                    <input
+                        type="checkbox"
+                        id="isPresent"
+                        name="isPresent"
+                        checked={formData.isPresent}
+                        onChange={handleChange}
+                        className="custom-checkbox-input"
+                    />
+                    <label htmlFor="isPresent" className="custom-checkbox-label">
+                        <span className="checkbox-box">
+                            {formData.isPresent && (
+                                <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
+                                    <path d="M2 6l3 3 5-5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                            )}
+                        </span>
+                        Mark as Present
+                    </label>
                 </div>
+            </div>
 
-                <div className="form-actions">
-                    <Button type="submit" variant="primary">
-                        Add Student
-                    </Button>
-                </div>
-            </form>
-        </div>
+            <div className="form-actions">
+                <Button type="submit" variant="primary">
+                    Add Student
+                </Button>
+            </div>
+        </form>
     );
 };
 

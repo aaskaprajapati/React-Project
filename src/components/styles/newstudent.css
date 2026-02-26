@@ -1,23 +1,8 @@
-.new-student-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.5rem;
-  max-width: 620px;
-  margin: 0 auto;
-  box-shadow: var(--shadow);
-}
-
-.new-student-card h2 {
-  font-size: 1.1rem;
-  margin-bottom: 1.25rem;
-}
-
 .form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.875rem;
-  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
 /* Checkbox */
@@ -65,7 +50,11 @@
 
 .form-actions {
   display: flex;
-  justify-content: flex-end;
+}
+
+.form-actions .btn {
+  width: 100%;
+  justify-content: center;
 }
 
 /* Mobile */
