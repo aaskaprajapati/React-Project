@@ -1,16 +1,16 @@
 import React from 'react';
 import './styles/Input.css';
 
-const Input = ({ 
-  label, 
-  id, 
-  name, 
-  type = 'text', 
-  value, 
-  onChange, 
-  placeholder, 
+const Input = ({
+  label,
+  id,
+  name,
+  type = 'text',
+  value,
+  onChange,
+  placeholder,
   required = false,
-  error = '' 
+  error = ''
 }) => {
   return (
     <div className="input-group">

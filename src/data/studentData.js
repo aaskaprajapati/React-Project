@@ -1,86 +1,84 @@
 const studentData = [
     {
         id: 1,
-        name: "Aman Shrestha",
-        age: 20,
+        name: "Maya Fernandez",
+        age: 22,
         course: "React.js",
-        grade: 92,
+        grade: 91,
         isPresent: true
     },
     {
         id: 2,
-        name: "Bishal Thapa",
+        name: "Samikshya Shrestha",
         age: 21,
         course: "Node.js",
-        grade: 85,
-        isPresent: false
-    },
-    {
-        id: 3,
-        name: "Chaya Khatri",
-        age: 22,
-        course: "Python",
-        grade: 78,
+        grade: 88,
         isPresent: true
     },
     {
+        id: 3,
+        name: "Lucas Pemberton",
+        age: 24,
+        course: "Python",
+        grade: 74,
+        isPresent: false
+    },
+    {
         id: 4,
-        name: "Deepa Gurung",
-        age: 19,
-        course: "React.js",
-        grade: 95,
+        name: "Zara Nguyen",
+        age: 20,
+        course: "UI/UX Design",
+        grade: 93,
         isPresent: true
     },
     {
         id: 5,
-        name: "Elena Rai",
-        age: 21,
-        course: "UI/UX Design",
-        grade: 88,
+        name: "Ethan Blackwood",
+        age: 23,
+        course: "React.js",
+        grade: 67,
         isPresent: false
     },
     {
         id: 6,
-        name: "Farhan Ali",
-        age: 23,
-        course: "Node.js",
+        name: "Sofia Castellano",
+        age: 19,
+        course: "Python",
         grade: 82,
         isPresent: true
     },
     {
         id: 7,
-        name: "Gita Sharma",
-        age: 20,
-        course: "Python",
-        grade: 90,
+        name: "Arjun Mehta",
+        age: 22,
+        course: "Node.js",
+        grade: 95,
         isPresent: true
     },
     {
         id: 8,
-        name: "Hari Prasad",
-        age: 22,
-        course: "React.js",
-        grade: 75,
+        name: "Isla Mackenzie",
+        age: 20,
+        course: "UI/UX Design",
+        grade: 79,
         isPresent: false
     },
     {
         id: 9,
-        name: "Ishani Joshi",
+        name: "Theo Beaumont",
         age: 21,
-        course: "UI/UX Design",
-        grade: 89,
+        course: "React.js",
+        grade: 86,
         isPresent: true
     },
     {
         id: 10,
-        name: "Jiten Tamang",
-        age: 24,
-        course: "Node.js",
-        grade: 81,
+        name: "Yuna Takahashi",
+        age: 23,
+        course: "Python",
+        grade: 90,
         isPresent: false
     }
 ];
-
-
 
 export default studentData;

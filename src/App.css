@@ -1,6 +1,4 @@
-/* App specific styles */
-.app-actions {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: var(--spacing-md);
+/* App-level */
+.add-form-wrapper {
+  margin-bottom: 1.5rem;
 }

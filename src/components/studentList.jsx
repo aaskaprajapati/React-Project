@@ -17,10 +17,10 @@ const StudentList = ({ students, onStatusChange, onDelete }) => {
     const filteredStudents = students.filter(std => {
         const matchesSearch = std.name.toLowerCase().includes(searchQuery.toLowerCase());
         const matchesCourse = filterCourse === "All" || std.course === filterCourse;
-        const matchesStatus = filterStatus === "All" || 
-            (filterStatus === "Present" && std.isPresent) || 
+        const matchesStatus = filterStatus === "All" ||
+            (filterStatus === "Present" && std.isPresent) ||
             (filterStatus === "Absent" && !std.isPresent);
-        
+
         return matchesSearch && matchesCourse && matchesStatus;
     }).sort((a, b) => {
         if (sortBy === "name") return a.name.localeCompare(b.name);
@@ -30,8 +30,10 @@ const StudentList = ({ students, onStatusChange, onDelete }) => {
 
     return (
         <div className="student-list-container">
+
+            {/* Toolbar */}
             <div className="toolbar">
-                <div className="toolbar-group">
+                <div className="toolbar-group toolbar-search">
                     <Input
                         label="Search Students"
                         placeholder="Search by name..."
@@ -40,8 +42,8 @@ const StudentList = ({ students, onStatusChange, onDelete }) => {
                     />
                 </div>
                 <div className="toolbar-group">
-                    <label className="input-label">Filter by Course</label>
-                    <select 
+                    <label className="input-label">Course</label>
+                    <select
                         className="toolbar-select"
                         value={filterCourse}
                         onChange={(e) => setFilterCourse(e.target.value)}
@@ -50,26 +52,26 @@ const StudentList = ({ students, onStatusChange, onDelete }) => {
                     </select>
                 </div>
                 <div className="toolbar-group">
-                    <label className="input-label">Filter by Status</label>
-                    <select 
+                    <label className="input-label">Status</label>
+                    <select
                         className="toolbar-select"
                         value={filterStatus}
                         onChange={(e) => setFilterStatus(e.target.value)}
                     >
-                        <option value="All">All Statuses</option>
+                        <option value="All">All</option>
                         <option value="Present">Present</option>
                         <option value="Absent">Absent</option>
                     </select>
                 </div>
                 <div className="toolbar-group">
                     <label className="input-label">Sort By</label>
-                    <select 
+                    <select
                         className="toolbar-select"
                         value={sortBy}
                         onChange={(e) => setSortBy(e.target.value)}
                     >
-                        <option value="name">Name (A-Z)</option>
-                        <option value="grade">Grade (High-Low)</option>
+                        <option value="name">Name (A–Z)</option>
+                        <option value="grade">Grade (High–Low)</option>
                     </select>
                 </div>
             </div>
@@ -81,47 +83,52 @@ const StudentList = ({ students, onStatusChange, onDelete }) => {
                 </div>
             ) : (
                 <div className="student-grid">
-                    {filteredStudents.map((std) => (
-                        <div 
-                            key={std.id} 
-                            className={`student-card ${std.grade >= 90 ? 'top-performer' : ''}`}
-                        >
-                            {std.grade >= 90 && <div className="top-performer-badge">Star</div>}
-                            
-                            <div className="student-info">
-                                <h3>{std.name}</h3>
-                                <p><strong>ID:</strong> {std.id}</p>
-                                <p><strong>Course:</strong> {std.course}</p>
-                                <p><strong>Age:</strong> {std.age}</p>
-                                <p><strong>Grade:</strong> {std.grade}</p>
-                                <div style={{marginTop: '8px'}}>
-                                    <Badge type={std.isPresent ? "success" : "danger"}>
-                                        {std.isPresent ? "Present" : "Absent"}
-                                    </Badge>
-                                    {std.grade >= 90 && (
-                                        <Badge type="warning" style={{marginLeft: '8px'}}>
-                                            Top Performer
+                    {filteredStudents.map((std) => {
+                        const isTopPerformer = std.grade >= 90;
+                        return (
+                            <div key={std.id} className="student-card">
+                                {/* Card top: name + grade */}
+                                <div className="card-top">
+                                    <div className="student-avatar">
+                                        {std.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2)}
+                                    </div>
+                                    <span className="student-grade">{std.grade}</span>
+                                </div>
+
+                                {/* Info */}
+                                <div className="student-info">
+                                    <h3 className="student-name">{std.name}</h3>
+                                    <p className="student-detail">{std.course} · Age {std.age} · ID #{std.id}</p>
+
+                                    {/* Badges — status AND top performer both shown inside the card */}
+                                    <div className="badge-row">
+                                        <Badge type={std.isPresent ? "success" : "danger"}>
+                                            {std.isPresent ? "Present" : "Absent"}
                                         </Badge>
-                                    )}
+                                        {isTopPerformer && (
+                                            <Badge type="warning">⭐ Top Performer</Badge>
+                                        )}
+                                    </div>
+                                </div>
+
+                                {/* Actions */}
+                                <div className="card-actions">
+                                    <Button
+                                        variant="outline"
+                                        onClick={() => onStatusChange(std.id)}
+                                    >
+                                        Toggle Status
+                                    </Button>
+                                    <Button
+                                        variant="danger"
+                                        onClick={() => onDelete(std.id)}
+                                    >
+                                        Remove
+                                    </Button>
                                 </div>
                             </div>
-                            
-                            <div className="card-actions">
-                                <Button 
-                                    variant="outline" 
-                                    onClick={() => onStatusChange(std.id)}
-                                >
-                                    Toggle status
-                                </Button>
-                                <Button 
-                                    variant="danger" 
-                                    onClick={() => onDelete(std.id)}
-                                >
-                                    Remove
-                                </Button>
-                            </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
             )}
         </div>

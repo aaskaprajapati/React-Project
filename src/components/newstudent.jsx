@@ -20,7 +20,7 @@ const NewStudent = ({ onAddStudent }) => {
             ...formData,
             [name]: type === "checkbox" ? checked : value
         });
-        
+
         // Clear error when user types
         if (errors[name]) {
             setErrors({ ...errors, [name]: "" });
@@ -33,14 +33,14 @@ const NewStudent = ({ onAddStudent }) => {
         if (!formData.age) newErrors.age = "Age is required";
         if (!formData.course.trim()) newErrors.course = "Course is required";
         if (!formData.grade) newErrors.grade = "Grade is required";
-        
+
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+
         if (!validate()) return;
 
         onAddStudent({
@@ -51,13 +51,7 @@ const NewStudent = ({ onAddStudent }) => {
         });
 
         // Reset form
-        setFormData({
-            name: "",
-            age: "",
-            course: "",
-            grade: "",
-            isPresent: false
-        });
+        setFormData({ name: "", age: "", course: "", grade: "", isPresent: false });
         setErrors({});
     };
 
@@ -82,7 +76,7 @@ const NewStudent = ({ onAddStudent }) => {
                         name="course"
                         value={formData.course}
                         onChange={handleChange}
-                        placeholder="e.g. React"
+                        placeholder="e.g. React.js"
                         error={errors.course}
                         required
                     />
@@ -109,26 +103,38 @@ const NewStudent = ({ onAddStudent }) => {
                         required
                     />
                 </div>
-                
+
                 <div className="checkbox-group">
-                    <input
-                        type="checkbox"
-                        id="isPresent"
-                        name="isPresent"
-                        checked={formData.isPresent}
-                        onChange={handleChange}
-                    />
-                    <label htmlFor="isPresent">Mark as Present</label>
+                    <div className="custom-checkbox-wrapper">
+                        <input
+                            type="checkbox"
+                            id="isPresent"
+                            name="isPresent"
+                            checked={formData.isPresent}
+                            onChange={handleChange}
+                            className="custom-checkbox-input"
+                        />
+                        <label htmlFor="isPresent" className="custom-checkbox-label">
+                            <span className="checkbox-box">
+                                {formData.isPresent && (
+                                    <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
+                                        <path d="M2 6l3 3 5-5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                )}
+                            </span>
+                            Mark as Present
+                        </label>
+                    </div>
                 </div>
-                
+
                 <div className="form-actions">
                     <Button type="submit" variant="primary">
-                        Add Student to Directory
+                        Add Student
                     </Button>
                 </div>
             </form>
         </div>
     );
-}
+};
 
 export default NewStudent;
